@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --background-color: #ecf0f1;
+    --text-color: #34495e;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    background-image: url('https://images.unsplash.com/photo-1531642765602-5cae8bbbf285?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 2rem;
+    min-height: 100vh;
+    box-sizing: border-box;
+    zoom: 0.7;
+    /* Zoom out the entire page */
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: -1.4rem;
+}
+
+.flight-plan {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.flight-plan:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.flight-plan h2 {
+    color: var(--secondary-color);
+    text-align: center;
+    /* Center the text */
+    margin-top: -7%;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary-color);
+    /* Keep the bottom border for style */
+    padding-bottom: 0.5rem;
+    /* Spacing below the title */
+}
+
+.flight-plan p {
+    margin: 0.5rem 0;
+    color: var(--text-color);
+    font-size: 130%;
+}
+
+.edit-form {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.edit-form label {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.edit-form input {
+    width: 97.4%;
+    padding: 0.5rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-top: -0.7rem;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    /* Red border */
+    box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.3);
+    background-color: white;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    /* Space between buttons */
+    margin-top: 2rem;
+    /* Add margin for spacing */
+}
+
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.delete-btn {
+    background-color: var(--accent-color);
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.no-plans {
+    text-align: center;
+    color: var(--text-color);
+    font-style: italic;
+    font-size: 1.7rem;
+    margin-top: -1.1rem;
+}
+
+input[type="checkbox"] {
+    width: 40px;
+    /* Increased size */
+    margin-left: 95%;
+    /* Adds some spacing from the content */
+    cursor: pointer;
+    height: 40px;
+    /* Increased size */
+    margin-top: -2.5%;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    /* No background when not checked */
+    appearance: none;
+    /* Remove default checkbox styling */
+    border-radius: 5px;
+    /* Rounded corners */
+    border: 2px solid var(--primary-color);
+    /* Border using primary color */
+    position: relative;
+    /* For positioning the checkmark */
+}
+
+/* Hover effect */
+input[type="checkbox"]:hover {
+    transform: scale(1.1);
+    /* Increases size on hover */
+}
+
+/* Checked state */
+input[type="checkbox"]:checked {
+    background-color: var(--primary-color);
+    /* Primary color when checked */
+    border-color: var(--primary-color);
+    /* Same color for border */
+}
+
+/* Style for the checkmark */
+input[type="checkbox"]:checked::before {
+    content: '✔';
+    /* Checkmark character */
+    color: white;
+    /* Color of the checkmark */
+    position: absolute;
+    /* Position the checkmark */
+    left: 50%;
+    /* Center horizontally */
+    top: 50%;
+    /* Center vertically */
+    transform: translate(-50%, -50%);
+    /* Adjust position to truly center it */
+    font-size: 28px;
+    /* Increased checkmark size */
+    transition: transform 0.3s ease;
+    /* Smooth scaling transition */
+}
+
+/* Scale up the checkmark when checked */
+input[type="checkbox"]:checked::before {
+    transform: translate(-50%, -50%) scale(1.2);
+    /* Make the checkmark bigger */
+}
