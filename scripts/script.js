@@ -88,7 +88,7 @@ function deleteSelectedPlans() {
 }
 
 function goToFlightPlanner() {
-    window.location.href = 'https://goly67.github.io/FlightPlanning/';
+    window.location.href = 'https://goly67.github.io/FlightPlans';
 }
 
 displayFlightPlans();
