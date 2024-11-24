@@ -7,15 +7,6 @@ function checkLoginStatus() {
       return;
   }
 
-function checkLoginStatus() {
-  const token = localStorage.getItem("authToken");
-
-  if (!token) {
-      console.log('No token found. Redirecting to login page...');
-      window.location.href = 'https://goly67.github.io/FlightPlannerLogin/';
-      return;
-  }
-
   // Validate the token with the server
   fetch('https://loginapilogger.glitch.me/api/validate-token', {
       method: 'POST',
