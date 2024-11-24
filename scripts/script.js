@@ -1,3 +1,44 @@
+function checkLoginStatus() {
+  const token = localStorage.getItem("authToken");
+
+  if (!token) {
+      console.log('No token found. Redirecting to login page...');
+      window.location.href = 'https://goly67.github.io/FlightPlannerLogin/';
+      return;
+  }
+
+  // Validate the token with the server
+  fetch('https://loginapilogger.glitch.me/api/validate-token', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+      }
+  })
+  .then(response => {
+      if (response.ok) {
+          console.log('Token is valid. User is logged in.');
+          return response.json(); // Optionally process the response
+      } else {
+          console.log('Invalid or expired token. Redirecting to login page...');
+          localStorage.removeItem("authToken");
+          localStorage.removeItem("userName");
+          localStorage.removeItem("isLoggedIn");
+          window.location.href = 'https://goly67.github.io/FlightPlannerLogin/';
+      }
+  })
+  .catch(error => {
+      console.error('Error validating token:', error);
+      alert("An error occurred. Please log in again.");
+      window.location.href = 'https://goly67.github.io/FlightPlannerLogin/';
+  });
+}
+
+window.onload = function() {
+  // Check if the user is logged in when the page loads
+  checkLoginStatus();
+};
+
 function displayFlightPlans() {
     const flightPlansList = document.getElementById('flightPlansList');
     const flightPlans = JSON.parse(localStorage.getItem('flightPlans')) || [];
