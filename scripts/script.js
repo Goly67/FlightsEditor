@@ -27,6 +27,9 @@ function checkLoginStatus() {
           window.location.href = 'https://goly67.github.io/FlightPlannerLogin/';
       }
   })
+  .then(() => {
+      displayFlightPlans(); // Call this function after the token is validated
+  })
   .catch(error => {
       console.error('Error validating token:', error);
       alert("An error occurred. Please log in again.");
@@ -45,10 +48,15 @@ window.onload = function() {
 function displayFlightPlans() {
     const flightPlansList = document.getElementById('flightPlansList');
     const flightPlans = JSON.parse(localStorage.getItem('flightPlans')) || [];
+
+    // Debugging: Check if flight plans exist in localStorage
+    console.log('Loaded flight plans:', flightPlans);
+
     if (flightPlans.length === 0) {
         flightPlansList.innerHTML = '<p class="no-plans">No flight plans submitted yet.</p>';
         return;
     }
+
     flightPlansList.innerHTML = flightPlans.map(plan => `
         <div class="flight-plan" id="plan-${plan.id}">
             <input type="checkbox" id="delete-${plan.id}"> 
@@ -134,5 +142,3 @@ function deleteSelectedPlans() {
 function goToFlightPlanner() {
     window.location.href = 'https://goly67.github.io/FlightPlans';
 }
-
-displayFlightPlans();
